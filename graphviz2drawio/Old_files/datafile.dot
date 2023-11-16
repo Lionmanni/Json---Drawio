@@ -1,0 +1,9 @@
+digraph G {
+    subgraph cluster_1 {
+        A_13;
+        B_14 [image="/home/andre/Downloads/Albis_JSON->DRAWIO/Albis_Vizual_Project/Image_Test_files/tree-smaller2.jpg"];
+        C_15 [image="/home/andre/Downloads/Albis_JSON->DRAWIO/Albis_Vizual_Project/Image_Test_files/tree-smaller2.jpg"];
+    }
+    A_13 -> B_14;
+    A_13 -> C_15;
+}

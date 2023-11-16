@@ -1,0 +1,77 @@
+import os
+from graphviz2drawio import graphviz2drawio
+
+
+def generate_dot(Connections, Entities):    # Extract unique groups
+    groups = {}
+    for node, attributes in Entities.items():
+        for group in attributes["group"]:
+            if group not in groups:
+                groups[group] = []
+            groups[group].append(node)
+
+    dot_representation = "digraph G {\n"
+
+    # Create subgraphs for each group
+    for group, nodes in groups.items():
+        dot_representation += f"    subgraph cluster_{group} {{\n"
+        for node in nodes:
+            attributes = Entities.get(node, {})
+            image_attr = ""
+            # If there's an image attribute, include it
+            if "image" in attributes:
+                image_path = attributes["image"].replace("\\", "\\\\")  # Escape the backslashes
+                image_attr = f' [image="{image_path}"]'
+
+            if len(attributes.get("group", [])) > 1:
+                # Create ghost node for each group
+                dot_representation += f"        {node}_{group}{image_attr} [label=\"\"];\n"
+                dot_representation += f"        {node}_{group} -> {node} [style=invis];\n"
+            else:
+                dot_representation += f"        {node}{image_attr};\n"
+        dot_representation += "    }\n"
+
+    # Create connections
+    for connection in Connections:
+        source, _, target = connection.partition(" - ")
+        dot_representation += f"    {source} -> {target};\n"
+
+    dot_representation += "}"
+
+    return dot_representation
+
+
+if __name__ == "__main__":
+    import sys
+    import importlib
+
+    if len(sys.argv) < 2:
+        print("Usage: python dot_generator.py <python_file_with_structure>")
+        sys.exit(1)
+
+    module_name = sys.argv[1].rstrip('.py')  # Remove .py extension if provided
+    module = importlib.import_module(module_name)
+
+    try:
+        Connections = module.Connections
+        Entities = module.Entities
+        output = generate_dot(Connections, Entities)
+        if output:
+            dotfile_path = os.path.abspath(f"{module_name}.dot")
+            with open(f"{module_name}.dot", 'w') as dot_file:
+                dot_file.write(output)
+
+            # Generate PNG from DOT file
+            os.system(f"dot -Tpng {module_name}.dot -o {module_name}.png")
+
+            # Open PNG - this method varies based on the operating system
+            if os.name == "posix":  # POSIX compliant (Unix, Linux, MacOS)
+                os.system(f"open {module_name}.png")
+            elif os.name == "nt":  # Windows
+                os.system(f"start {module_name}.png")
+    except AttributeError:
+        print(f"Error: {module_name}.py must have both 'Connections' and 'Entities' defined.")
+
+if __name__ == "__main__":
+    xml = graphviz2drawio.convert(dotfile_path)
+    print(xml)

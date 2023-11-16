@@ -1,0 +1,17 @@
+{
+    "Connections":[ "A_13 - B_1d4", "A_13 - C_15", "A_13 - 392", "Testfunktion - getAntragClipboard", "C_125 - deineMutter", "C_125 - Haendler"  ]
+    ,
+    "Entities": {
+        "Testfunktion": {"group": "1"},
+        "B_1d4": {"group": "1", "image": "/home/andre/Downloads/Albis_JSON->DRAWIO/Albis_Vizual_Project/Image_Test_files/tree-smaller2.jpg"},
+        "C_15": {"group": "2", "image": "/home/andre/Downloads/Albis_JSON->DRAWIO/Albis_Vizual_Project/Image_Test_files/tree-smaller2.jpg"},
+        "D_14": {"group": "3", "image": "/home/andre/Downloads/Albis_JSON->DRAWIO/Albis_Vizual_Project/Image_Test_files/tree-smaller2.jpg"},
+        "getAntragClipboard": {"group": "2", "image": "/home/andre/Downloads/Albis_JSON->DRAWIO/Albis_Vizual_Project/Image_Test_files/tree-smaller2.jpg"},
+        "Haendler": {"group": "1"},
+        "getAdressCrefo": {"group": "1", "image": "/home/andre/Downloads/Albis_JSON->DRAWIO/Albis_Vizual_Project/Image_Test_files/tree-smaller2.jpg"},
+        "C_125": {"group": "2", "image": "/home/andre/Downloads/Albis_JSON->DRAWIO/Albis_Vizual_Project/Image_Test_files/tree-smaller2.jpg"},
+        "getAntragClipboard2": {"group": "3", "image": "/home/andre/Downloads/Albis_JSON->DRAWIO/Albis_Vizual_Project/Image_Test_files/tree-smaller2.jpg"},
+        "deineMutter": {"group": "2", "image": "/home/andre/Downloads/Albis_JSON->DRAWIO/Albis_Vizual_Project/Image_Test_files/tree-smaller2.jpg"}
+
+    }
+}

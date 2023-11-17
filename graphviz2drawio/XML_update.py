@@ -12,7 +12,7 @@ def update_xml(entity_base64_list, xml_content):
     node_ids = []
     for node_id in entity_base64_list:
         node_ids.append(node_id[0])
-    print(node_ids)
+    #print(node_ids)
     #xml_file_path = r"/home/andre/Downloads/JSON-XML/graphviz2drawio/output_drawio_no_img.xml"
     tree = ET.ElementTree(ET.fromstring(xml_content))
     root = tree.find('root')
@@ -34,7 +34,7 @@ def update_xml(entity_base64_list, xml_content):
                     if mxgeometry is not None:
                         geometries[key] = {attr: mxgeometry.get(attr) for attr in ['x', 'y', 'width', 'height']}
 
-    print(geometries)
+    #print(geometries)
 
     base64_dic = {}
     for key in geometries:

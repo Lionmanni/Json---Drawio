@@ -1,6 +1,5 @@
 import base64
 import re
-from PIL import Image
 import json
 from io import BytesIO
 import xml.etree.ElementTree as ET

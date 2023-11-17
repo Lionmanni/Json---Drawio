@@ -61,14 +61,14 @@ def main(json_file_path):
                 with open(f"{module_name}.dot", 'w') as dot_file:
                     dot_file.write(output)
 
-                # Generate PNG from DOT file
+                """# Generate PNG from DOT file
                 os.system(f"dot -Tpng {module_name}.dot -o {module_name}.png")
 
                 # Open PNG - this method varies based on the operating system
                 if os.name == "posix":  # POSIX compliant (Unix, Linux, MacOS)
                     os.system(f"open {module_name}.png")
                 elif os.name == "nt":  # Windows
-                    os.system(f"start {module_name}.png")
+                    os.system(f"start {module_name}.png")"""
         except (FileNotFoundError, KeyError):
             print("Error: The JSON file must exist and have 'Connections' and 'Entities' defined.")
 
